@@ -7,12 +7,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --glass: rgba(255, 255, 255, 0.08);
-            --border: rgba(255, 255, 255, 0.15);
-            --accent: #4ecca3; /* Modern Teal accent */
-            --bg: #0f172a;
-        }
+           
+        }:root {
+    --glass: rgba(0, 0, 0, 0.05); /* Qelqi tani do jetë pak i errët që të duket mbi qumësht */
+    --border: rgba(0, 0, 0, 0.1);
+    --accent: #d4a373; /* Një ngjyrë kafe e artë që shkon shumë me ngjyrën qumësht */
+    --bg: #fffdf5; /* Kjo është ngjyra "Milk" */
+}
 
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg); /* Sfondi bëhet ngjyrë qumështi */
+    color: #2c2c2c; /* Teksti bëhet i errët që të lexohet */
+    scroll-behavior: smooth;
+    line-height: 1.6;
+}
         * { box-sizing: border-box; }
 
         body {
