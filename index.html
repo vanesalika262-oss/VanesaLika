@@ -68,14 +68,26 @@ nav a:hover {
             padding: 0 20px;
         }
 
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+        <header id="home" style="background: radial-gradient(circle at center, #fffdf5 0%, #f5f2e8 100%);">
+    <div style="border: 1px solid rgba(212, 163, 115, 0.3); padding: 60px 40px; position: relative;">
+        <div style="position: absolute; top: -5px; left: -5px; width: 20px; height: 20px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent);"></div>
+        <div style="position: absolute; bottom: -5px; right: -5px; width: 20px; height: 20px; border-bottom: 2px solid var(--accent); border-right: 2px solid var(--accent);"></div>
+        
+        <h1 style="margin: 0; font-weight: 200; letter-spacing: 12px; text-transform: uppercase; font-size: clamp(2.5rem, 7vw, 5rem);">
+            Vanesa Lika
+        </h1>
+        <p style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; margin-top: 20px; color: var(--accent); opacity: 0.8;">
+            Visual Arts & Contemporary Design
+        </p>
+        
+        <a href="#gallery" style="display: inline-block; margin-top: 40px; padding: 12px 30px; border: 1px solid #1a1a1a; text-decoration: none; color: #1a1a1a; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; transition: 0.4s;" 
+           onmouseover="this.style.background='#1a1a1a'; this.style.color='#fff';" 
+           onmouseout="this.style.background='transparent'; this.style.color='#1a1a1a';">
+            Explore Portfolio
+        </a>
+    </div>
+</header>           
+
 
         header h1 {
             font-size: clamp(2.5rem, 8vw, 4.5rem);
@@ -177,10 +189,8 @@ nav a:hover {
             .bio-flex { flex-direction: column; text-align: center; padding: 30px; }
             nav { width: 90%; justify-content: center; gap: 15px; font-size: 0.8rem; }
         }
-    </style>.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    </style>
+
 }</head>
 <body>
 
