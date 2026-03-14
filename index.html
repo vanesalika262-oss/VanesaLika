@@ -130,7 +130,7 @@
             <h2 class="section-title">Selected Portfolio</h2>
             <div class="gallery">
                 <div class="art-card">
-                    <img src="piktura.jpeg" alt="L’Éveil" data-title="L’Éveil" data-desc="Au commencement il y a le silence. Le passé repose là, lisse et sombre... <br><br> 80cm x 80cm - Acrylique sur toile">
+                    <img src="piktura.jpeg" alt="L’Éveil" data-title="L’Éveil" data-desc="Au commencement il y a le silence. Le pasado repose là, lisse et sombre... <br><br> 80cm x 80cm - Acrylique sur toile">
                     <div style="padding: 20px; text-align: center;"><h3 style="font-weight: 400;">L’Éveil</h3></div>
                 </div>
                 <div class="art-card">
@@ -198,7 +198,7 @@
         // Safety Trigger: Nese faqja nuk hapet pas 3 sekondash, e detyrojme te hapet
         setTimeout(() => {
             const pl = document.getElementById('preloader');
-            if(pl) pl.classList.add('loader-hidden');
+            if(pl && !pl.classList.contains('loader-hidden')) pl.classList.add('loader-hidden');
         }, 3000);
 
         // 2. Scroll Animation
@@ -230,7 +230,7 @@
             document.body.style.overflow = 'auto';
         });
 
-        // 4. DISQUS SAFE LOAD (RREGULLUAR)
+        // 4. DISQUS SAFE LOAD
         var disqus_config = function () {
             this.page.url = window.location.href;  
             this.page.identifier = 'vanesa-lika-portfolio'; 
@@ -239,13 +239,12 @@
         (function() { 
             try {
                 var d = document, s = d.createElement('script');
-                // ZEVENDESIMI I DUHUR: 
-                // Ne llogarine tende te Disqus, gjej 'Shortname' dhe vendose ne vend te 'vanesalika'
+                // Shortname i saktë bazuar në profilin tënd: vanesalika
                 s.src = 'https://vanesalika.disqus.com/embed.js'; 
                 s.setAttribute('data-timestamp', +new Date());
                 (d.head || d.body).appendChild(s);
             } catch (e) {
-                console.warn("Disqus block prevented. Page still loading.");
+                console.warn("Disqus load failed, skipping.");
             }
         })();
     </script>
