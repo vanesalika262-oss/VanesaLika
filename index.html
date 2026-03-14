@@ -226,8 +226,12 @@
         <a href="#gallery">Gallery</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
-    </nav>
-
+    </nav><nav>
+    <a href="#home">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a> <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+</nav>
     <div class="container">
         <header id="home">
             <div>
@@ -261,8 +265,12 @@
             </div>
         </section>
 
-        <section id="about">
-            <h2 class="section-title">The Artist</h2>
+        <section id="about"><section id="reviews" class="container">
+    <h2 class="section-title">Collector Feedback</h2>
+    <div style="background: white; padding: 40px; border: 1px solid var(--border);">
+        <div id="disqus_thread"></div>
+    </div>
+</section>            <h2 class="section-title">The Artist</h2>
             <div class="bio-flex">
                 <img src="vana.jpeg" alt="Vanesa Lika" class="bio-img">
                 <div class="bio-text">
@@ -355,6 +363,20 @@
                 document.body.style.overflow = 'auto';
             }
         });
-    </script>
-</body>
+
+})();var disqus_config = function () {
+    this.page.url = window.location.href;  
+    this.page.identifier = 'vanesa-lika-portfolio'; 
+};
+
+(function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://vanesa-lika.disqus.com/embed.js'; // Këtu do vendoset emri i llogarisë tënde
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();</script>       
+})(); 
+})();})();
+
+})();/body>
 </html>
