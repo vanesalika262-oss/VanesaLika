@@ -308,7 +308,46 @@
     /* SMOOTH SCROLL EFFECT */
     html { scroll-behavior: smooth; }
 
-</style></head>
+/* KURSORI ARTISTIK */
+.cursor {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease, background 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+
+.cursor-follower {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.05s ease;
+}
+
+/* Kur mausi kalon mbi një link ose foto */
+.hovering {
+    transform: translate(-50%, -50%) scale(3);
+    background: rgba(212, 163, 115, 0.1);
+}
+
+/* Fshih kursorin origjinal në desktop */
+@media (min-width: 900px) {
+    body { cursor: none; }
+    a, button { cursor: none; }
+}
+
+@media (max-width: 900px) {
+    .cursor, .cursor-follower { display: none; }
+}</head>
 <body>
 
     <nav>
@@ -396,6 +435,50 @@ c’est le monde entier qui renaît.
     <footer style="text-align: center; padding: 40px; opacity: 0.3; font-size: 0.8rem;">
         &copy; 2026 Vanesa Lika. All Rights Reserved.
     </footer>
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
 
-</body>
+<script>
+    const cursor = document.querySelector('.cursor');
+    const follower = document.querySelector('.cursor-follower');
+    const links = document.querySelectorAll('a, button, .art-card');
+
+    // Lëvizja e kursorit
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        
+        setTimeout(() => {
+            follower.style.left = e.clientX + 'px';
+            follower.style.top = e.clientY + 'px';
+        }, 50);
+    });
+
+    // Efekti kur kalon mbi elemente
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+        link.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+    });
+
+    // Efekti 3D Tilt për pikturat
+    document.querySelectorAll('.art-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+        });
+    });
+</script></body>
 </html>
