@@ -77,7 +77,7 @@
         .bio-text { flex: 1 1 300px; }
 
         /* --- REVIEWS --- */
-        .reviews-container { background: white; padding: 40px; border: 1px solid var(--border); margin-bottom: 100px; min-height: 200px; }
+        .reviews-container { background: white; padding: 40px; border: 1px solid var(--border); margin-bottom: 100px; min-height: 250px; }
 
         /* --- CONTACT --- */
         .contact-form { max-width: 600px; margin: 0 auto 100px auto; }
@@ -130,11 +130,11 @@
             <h2 class="section-title">Selected Portfolio</h2>
             <div class="gallery">
                 <div class="art-card">
-                    <img src="piktura.jpeg" alt="L’Éveil" data-title="L’Éveil" data-desc="Au commencement il y a le silence. Le pasado repose là, lisse et sombre... <br><br> 80cm x 80cm - Acrylique sur toile">
+                    <img src="piktura.jpeg" alt="L’Éveil" data-title="L’Éveil" data-desc="80cm x 80cm - Acrylique sur toile">
                     <div style="padding: 20px; text-align: center;"><h3 style="font-weight: 400;">L’Éveil</h3></div>
                 </div>
                 <div class="art-card">
-                    <img src="piktura2.jpeg" alt="La Fracture" data-title="La Fracture" data-desc="Car chaque âme porte en elle un horizon lumineux... <br><br> 80cm x 80cm - Acrylique sur toile">
+                    <img src="piktura2.jpeg" alt="La Fracture" data-title="La Fracture" data-desc="80cm x 80cm - Acrylique sur toile">
                     <div style="padding: 20px; text-align: center;"><h3 style="font-weight: 400;">La Fracture</h3></div>
                 </div>
             </div>
@@ -147,7 +147,7 @@
                 <div class="bio-text">
                     <h3 style="font-weight: 300; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">The Artist</h3>
                     <p style="font-size: 1.1rem; font-style: italic; line-height: 1.8; opacity: 0.9;">
-                        "Vanesa Lika is a modern visual artist who explores the depth of human emotion through a vibrant interplay of color and modern form. Her work translates internal silences into visual rhythms."
+                        "Vanesa Lika is a modern visual artist who explores the depth of human emotion through color and form. Her work translates internal silences into visual rhythms."
                     </p>
                 </div>
             </div>
@@ -156,7 +156,14 @@
         <section id="reviews">
             <h2 class="section-title">Collector Feedback</h2>
             <div class="reviews-container">
-                <div id="disqus_thread"></div>
+                <div id="cusdis_thread"
+                    data-host="https://cusdis.com"
+                    data-app-id="96bf9343-a6d4-4991-865f-b73041e21977"
+                    data-page-id="vanesa-lika-portfolio"
+                    data-page-url="window.location.href"
+                    data-page-title="Vanesa Lika Portfolio">
+                </div>
+                <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
             </div>
         </section>
 
@@ -195,10 +202,10 @@
             document.getElementById('preloader').classList.add('loader-hidden');
         });
 
-        // Safety Trigger: Nese faqja nuk hapet pas 3 sekondash, e detyrojme te hapet
+        // Safety fallback after 3 seconds
         setTimeout(() => {
             const pl = document.getElementById('preloader');
-            if(pl && !pl.classList.contains('loader-hidden')) pl.classList.add('loader-hidden');
+            if(pl) pl.classList.add('loader-hidden');
         }, 3000);
 
         // 2. Scroll Animation
@@ -229,24 +236,6 @@
             lightbox.style.display = 'none';
             document.body.style.overflow = 'auto';
         });
-
-        // 4. DISQUS SAFE LOAD
-        var disqus_config = function () {
-            this.page.url = window.location.href;  
-            this.page.identifier = 'vanesa-lika-portfolio'; 
-        };
-
-        (function() { 
-            try {
-                var d = document, s = d.createElement('script');
-                // Shortname i saktë bazuar në profilin tënd: vanesalika
-                s.src = 'https://vanesalika.disqus.com/embed.js'; 
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            } catch (e) {
-                console.warn("Disqus load failed, skipping.");
-            }
-        })();
     </script>
 </body>
 </html>
