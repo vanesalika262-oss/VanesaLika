@@ -15,7 +15,6 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -28,183 +27,70 @@
 
         /* --- PRELOADER --- */
         #preloader {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: var(--bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            transition: opacity 0.8s ease-out, visibility 0.8s;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg); display: flex; justify-content: center;
+            align-items: center; z-index: 10000; transition: opacity 0.5s ease;
         }
         .loader-content { text-align: center; }
         .loader-logo {
-            font-size: 3rem;
-            font-weight: 200;
-            letter-spacing: 10px;
-            margin-bottom: 20px;
-            color: var(--accent);
+            font-size: 3rem; font-weight: 200; letter-spacing: 10px;
+            margin-bottom: 20px; color: var(--accent);
             animation: pulse 1.5s infinite ease-in-out;
         }
-        .loader-bar {
-            width: 0; height: 1px;
-            background: var(--accent);
-            margin: 0 auto;
-            animation: grow 2s forwards;
-        }
+        .loader-bar { width: 0; height: 1px; background: var(--accent); margin: 0 auto; animation: grow 1.5s forwards; }
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.95); } }
         @keyframes grow { to { width: 100px; } }
-        .loader-hidden { opacity: 0; visibility: hidden; }
+        .loader-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
         /* --- NAVIGATION --- */
         nav {
-            position: fixed;
-            top: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            padding: 12px 30px;
-            display: flex;
-            gap: 20px;
+            position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
+            z-index: 1000; background: var(--glass); backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px); border: 1px solid var(--border);
+            border-radius: 100px; padding: 12px 30px; display: flex; gap: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
-        nav a {
-            color: #1a1a1a;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
+        nav a { color: #1a1a1a; text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
         nav a:hover { color: var(--accent); }
 
-        /* --- HERO SECTION --- */
-        header {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        @keyframes reveal {
-            0% { opacity: 0; letter-spacing: 20px; filter: blur(10px); }
-            100% { opacity: 1; letter-spacing: 5px; filter: blur(0); }
-        }
-        header h1 {
-            animation: reveal 1.5s cubic-bezier(0.19, 1, 0.22, 1);
-            font-size: clamp(2.5rem, 10vw, 5rem);
-            font-weight: 200;
-            text-transform: uppercase;
-        }
-
-        /* --- GALLERY & CARDS --- */
+        /* --- SECTIONS --- */
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-        
+        header { height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; }
+        header h1 { font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 200; text-transform: uppercase; letter-spacing: 5px; }
+
         .section-title {
-            font-size: 0.9rem;
-            margin: 100px 0 40px 0;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            text-align: center;
-            color: var(--accent);
+            font-size: 0.9rem; margin: 100px 0 40px 0; text-transform: uppercase;
+            letter-spacing: 5px; text-align: center; color: var(--accent);
         }
-        .section-title::after {
-            content: ''; display: block; width: 30px; height: 1px;
-            background: var(--accent); margin: 15px auto;
-        }
+        .section-title::after { content: ''; display: block; width: 30px; height: 1px; background: var(--accent); margin: 15px auto; }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            padding-bottom: 60px;
-        }
-
-        .art-card {
-            background: white;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-            cursor: pointer;
-            opacity: 0;
-            transform: translateY(30px);
-        }
+        /* --- GALLERY --- */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; padding-bottom: 60px; }
+        .art-card { background: white; border: 1px solid var(--border); overflow: hidden; transition: all 0.5s ease; cursor: pointer; opacity: 0; transform: translateY(20px); }
         .art-card.visible { opacity: 1; transform: translateY(0); }
-        .art-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(212, 163, 115, 0.1);
-            border-color: var(--accent);
-        }
-        .art-card img {
-            width: 100%; height: 450px;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-        .art-card:hover img { transform: scale(1.05); }
+        .art-card img { width: 100%; height: 450px; object-fit: cover; transition: transform 0.8s ease; }
 
-        /* --- BIOGRAPHY --- */
-        .bio-flex {
-            display: flex; flex-wrap: wrap; gap: 60px;
-            align-items: center; margin-bottom: 120px;
-            background: white; padding: 40px; border-radius: 2px;
-        }
-        .bio-img { flex: 1 1 400px; height: 500px; object-fit: cover; filter: sepia(10%); }
+        /* --- ABOUT --- */
+        .bio-flex { display: flex; flex-wrap: wrap; gap: 60px; align-items: center; margin-bottom: 120px; background: white; padding: 40px; border: 1px solid var(--border); }
+        .bio-img { flex: 1 1 400px; height: 500px; object-fit: cover; }
         .bio-text { flex: 1 1 300px; }
 
+        /* --- REVIEWS --- */
+        .reviews-container { background: white; padding: 40px; border: 1px solid var(--border); margin-bottom: 100px; }
+
         /* --- CONTACT --- */
-        .contact-form form {
-            display: flex; flex-direction: column; gap: 15px;
-            max-width: 600px; margin: 0 auto 100px auto;
-        }
-        input, textarea {
-            padding: 15px; border: 1px solid var(--border);
-            border-radius: 0; font-family: inherit; background: transparent;
-        }
-        .submit-btn {
-            background: #1a1a1a; color: white; padding: 15px;
-            border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 2px;
-        }
+        input, textarea { width: 100%; padding: 15px; border: 1px solid var(--border); background: transparent; margin-bottom: 15px; font-family: inherit; }
+        .submit-btn { background: #1a1a1a; color: white; padding: 15px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; width: 100%; transition: 0.3s; }
+        .submit-btn:hover { background: var(--accent); }
 
-        /* --- LIGHTBOX (Teksti anash) --- */
-        .lightbox {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            display: none; justify-content: center; align-items: center; z-index: 2000;
-        }
-        .lightbox-content {
-            display: flex; flex-direction: row; align-items: center;
-            max-width: 90%; gap: 50px;
-        }
-        #lightbox-img {
-            max-height: 80vh; max-width: 60%;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
-        }
+        /* --- LIGHTBOX --- */
+        .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.98); display: none; justify-content: center; align-items: center; z-index: 2000; }
+        .lightbox-content { display: flex; flex-direction: row; align-items: center; max-width: 90%; gap: 50px; }
+        #lightbox-img { max-height: 80vh; max-width: 60%; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
         .lightbox-details { max-width: 400px; text-align: left; }
-        #art-title-lb {
-            font-size: 1.6rem; font-weight: 300; letter-spacing: 3px;
-            margin-bottom: 20px; text-transform: uppercase; color: var(--accent);
-        }
-        #art-description-lb {
-            font-size: 1rem; line-height: 1.8; font-style: italic;
-            color: #444; margin-bottom: 30px;
-        }
         .close-lightbox { position: absolute; top: 30px; right: 40px; font-size: 40px; cursor: pointer; }
-        .inquire-btn {
-            display: inline-block; padding: 12px 30px;
-            border: 1px solid var(--accent); color: var(--accent);
-            text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 2px;
-            transition: 0.3s;
-        }
-        .inquire-btn:hover { background: var(--accent); color: white; }
+        .inquire-btn { display: inline-block; padding: 12px 30px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; }
 
-        /* Mobile Response për Lightbox */
         @media (max-width: 900px) {
             .lightbox-content { flex-direction: column; overflow-y: auto; padding: 50px 0; }
             #lightbox-img { max-width: 95%; max-height: 50vh; }
@@ -223,15 +109,12 @@
 
     <nav>
         <a href="#home">Home</a>
-        <a href="#gallery">Gallery</a>
+        <a href="#gallery">Portfolio</a>
         <a href="#about">About</a>
+        <a href="#reviews">Reviews</a>
         <a href="#contact">Contact</a>
-    </nav><nav>
-    <a href="#home">Home</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#reviews">Reviews</a> <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-</nav>
+    </nav>
+
     <div class="container">
         <header id="home">
             <div>
@@ -243,55 +126,45 @@
         <section id="gallery">
             <h2 class="section-title">Selected Portfolio</h2>
             <div class="gallery">
-                
                 <div class="art-card">
-                    <img src="piktura.jpeg" alt="L’Éveil" 
-                         data-title="L’Éveil" 
-                         data-desc="Au commencement il y a le silence. Le passé repose là, lisse et sombre comme une mémoire enfouie. En remontant, les traces apparaissent, se répètent, deviennent rythme et fréquences. Peu à peu, la vibration s’élève jusqu’à atteindre la lumière. Une lumière diffuse et douce comme l’aube d’une conscience nouvelle. Et dans cette ascension silencieuse, l’ombre laisse place à l’éveil. <br><br> 80cm x 80cm - Acrylique sur toile">
-                    <div style="padding: 20px; text-align: center;">
-                        <h3 style="font-weight: 400; letter-spacing: 1px;">L’Éveil</h3>
-                    </div>
+                    <img src="piktura.jpeg" alt="L’Éveil" data-title="L’Éveil" data-desc="Au commencement il y a le silence... <br><br> 80cm x 80cm - Acrylique sur toile">
+                    <div style="padding: 20px; text-align: center;"><h3 style="font-weight: 400;">L’Éveil</h3></div>
                 </div>
-
                 <div class="art-card">
-                    <img src="piktura2.jpeg" alt="La Fracture"
-                         data-title="La Fracture"
-                         data-desc="Car chaque âme porte en elle un horizon lumineux, où l’ombre rencontre l’aube. Dans la profondeur silencieuse de l’être, quelque chose s’ouvre, comme une fracture sacrée. Et lorsque enfin la lumière touche le cœur, ce n’est pas seulement la saison qui change, c’est le monde entier qui renaît. <br><br> 80cm x 80cm - Acrylique sur toile">
-                    <div style="padding: 20px; text-align: center;">
-                        <h3 style="font-weight: 400; letter-spacing: 1px;">La Fracture</h3>
-                    </div>
+                    <img src="piktura2.jpeg" alt="La Fracture" data-title="La Fracture" data-desc="Car chaque âme porte en elle un horizon lumineux... <br><br> 80cm x 80cm - Acrylique sur toile">
+                    <div style="padding: 20px; text-align: center;"><h3 style="font-weight: 400;">La Fracture</h3></div>
                 </div>
-
             </div>
         </section>
 
-        <section id="about"><section id="reviews" class="container">
-    <h2 class="section-title">Collector Feedback</h2>
-    <div style="background: white; padding: 40px; border: 1px solid var(--border);">
-        <div id="disqus_thread"></div>
-    </div>
-</section>            <h2 class="section-title">The Artist</h2>
+        <section id="about">
+            <h2 class="section-title">The Artist</h2>
             <div class="bio-flex">
                 <img src="vana.jpeg" alt="Vanesa Lika" class="bio-img">
                 <div class="bio-text">
-                    <h3 style="font-weight: 400; letter-spacing: 2px;">Vanesa Lika</h3>
-                    <p style="margin-top: 20px; font-size: 1.1rem; font-style: italic; opacity: 0.8;">
-                        "Vanesa Lika is a modern visual artist who explores the depth of human emotion through a vibrant interplay of color and modern form."
+                    <h3 style="font-weight: 300; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">About the Artist</h3>
+                    <p style="font-size: 1.1rem; font-style: italic; line-height: 1.8; opacity: 0.9;">
+                        "Vanesa Lika is a modern visual artist who explores the depth of human emotion through a vibrant interplay of color and form."
                     </p>
                 </div>
             </div>
         </section>
 
+        <section id="reviews">
+            <h2 class="section-title">Collector Feedback</h2>
+            <div class="reviews-container">
+                <div id="disqus_thread"></div>
+            </div>
+        </section>
+
         <section id="contact">
             <h2 class="section-title">Contact</h2>
-            <div class="contact-form">
-                <form action="mailto:vanesalika262@gmail.com" method="POST" enctype="text/plain">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea rows="5" placeholder="Your Message"></textarea>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-            </div>
+            <form action="mailto:vanesalika262@gmail.com" method="POST" enctype="text/plain" style="max-width: 600px; margin: 0 auto 100px auto;">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Your Message"></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
         </section>
     </div>
 
@@ -300,8 +173,8 @@
         <div class="lightbox-content">
             <img id="lightbox-img" src="">
             <div class="lightbox-details">
-                <h3 id="art-title-lb"></h3>
-                <p id="art-description-lb"></p>
+                <h3 id="art-title-lb" style="color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;"></h3>
+                <p id="art-description-lb" style="margin-bottom: 30px; font-style: italic;"></p>
                 <a href="mailto:vanesalika262@gmail.com" class="inquire-btn">Inquire about this piece</a>
             </div>
         </div>
@@ -312,71 +185,45 @@
     </footer>
 
     <script>
-        // 1. Preloader
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.classList.add('loader-hidden');
-            }, 1000); 
-        });
+        // 1. Preloader Safety
+        window.addEventListener('load', () => { document.getElementById('preloader').classList.add('loader-hidden'); });
+        setTimeout(() => { const pl = document.getElementById('preloader'); if(pl) pl.classList.add('loader-hidden'); }, 3000);
 
         // 2. Scroll Animation
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
+        document.querySelectorAll('.art-card').forEach(card => observer.observe(card));
 
-        document.querySelectorAll('.art-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // 3. Lightbox Logic
+        // 3. Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxTitle = document.getElementById('art-title-lb');
         const lightboxDesc = document.getElementById('art-description-lb');
-        const closeBtn = document.querySelector('.close-lightbox');
 
         document.querySelectorAll('.art-card img').forEach(img => {
             img.addEventListener('click', (e) => {
                 lightbox.style.display = 'flex';
                 lightboxImg.src = e.target.src;
-                
                 lightboxTitle.innerHTML = e.target.getAttribute('data-title');
                 lightboxDesc.innerHTML = e.target.getAttribute('data-desc');
-                
                 document.body.style.overflow = 'hidden';
             });
         });
 
-        closeBtn.addEventListener('click', () => {
-            lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
+        document.querySelector('.close-lightbox').addEventListener('click', () => { lightbox.style.display = 'none'; document.body.style.overflow = 'auto'; });
 
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-})();var disqus_config = function () {
-    this.page.url = window.location.href;  
-    this.page.identifier = 'vanesa-lika-portfolio'; 
-};
-
-(function() { 
-    var d = document, s = d.createElement('script');
-    s.src = 'https://vanesa-lika.disqus.com/embed.js'; // Këtu do vendoset emri i llogarisë tënde
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-})();</script>       
-})(); 
-})();})();
-
-})();/body>
+        // 4. DISQUS CONFIGURATION
+        var disqus_config = function () {
+            this.page.url = window.location.href;  
+            this.page.identifier = 'vanesa-lika-portfolio'; 
+        };
+        (function() { 
+            var d = document, s = d.createElement('script');
+            s.src = 'https://vanesa-lika.disqus.com/embed.js'; // MOS HARRO: Ndrysho 'vanesa-lika' me emrin tend ne Disqus
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+</body>
 </html>
