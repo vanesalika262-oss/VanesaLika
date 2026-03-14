@@ -243,7 +243,7 @@
                 <div class="art-card">
                     <img src="piktura.jpeg" alt="L’Éveil" 
                          data-title="L’Éveil" 
-                         data-desc="Au commencement il y a le silence. Le passé repose là, lisse et sombre comme une mémoire enfouie. En remontant, les traces apparaissent, se répètent, deviennent rythme et fréquences. Peu à peu, la vibration s’élève jusqu’à atteindre la lumière. Une lumière diffuse et douce comme l’aube d’une conscience nouvelle. Et dans cette ascension silencieuse, l’ombre laisse place à l’éveil. <br><br> La Fracture - 80cm x 80cm - Acrylique sur toile">
+                         data-desc="Au commencement il y a le silence. Le passé repose là, lisse et sombre comme une mémoire enfouie. En remontant, les traces apparaissent, se répètent, deviennent rythme et fréquences. Peu à peu, la vibration s’élève jusqu’à atteindre la lumière. Une lumière diffuse et douce comme l’aube d’une conscience nouvelle. Et dans cette ascension silencieuse, l’ombre laisse place à l’éveil. <br><br> 80cm x 80cm - Acrylique sur toile">
                     <div style="padding: 20px; text-align: center;">
                         <h3 style="font-weight: 400; letter-spacing: 1px;">L’Éveil</h3>
                     </div>
@@ -252,7 +252,7 @@
                 <div class="art-card">
                     <img src="piktura2.jpeg" alt="La Fracture"
                          data-title="La Fracture"
-                         data-desc="Car chaque âme porte en elle un horizon lumineux, où l’ombre rencontre l’aube. Dans la profondeur silencieuse de l’être, quelque chose s’ouvre, comme une fracture sacrée. Et lorsque enfin la lumière touche le cœur, ce n’est pas seulement la saison qui change, c’est le monde entier qui renaît. <br><br> - 80cm x 80cm - Acrylique sur toile">
+                         data-desc="Car chaque âme porte en elle un horizon lumineux, où l’ombre rencontre l’aube. Dans la profondeur silencieuse de l’être, quelque chose s’ouvre, comme une fracture sacrée. Et lorsque enfin la lumière touche le cœur, ce n’est pas seulement la saison qui change, c’est le monde entier qui renaît. <br><br> 80cm x 80cm - Acrylique sur toile">
                     <div style="padding: 20px; text-align: center;">
                         <h3 style="font-weight: 400; letter-spacing: 1px;">La Fracture</h3>
                     </div>
@@ -294,7 +294,7 @@
             <div class="lightbox-details">
                 <h3 id="art-title-lb"></h3>
                 <p id="art-description-lb"></p>
-                <a href="mailto:vanesalika262@gmail.com" class="inquire-btn">Interesohu për këtë punim</a>
+                <a href="mailto:vanesalika262@gmail.com" class="inquire-btn">Inquire about this piece</a>
             </div>
         </div>
     </div>
@@ -325,7 +325,7 @@
             observer.observe(card);
         });
 
-        // 3. Lightbox Logic (Me tekstin anash)
+        // 3. Lightbox Logic
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxTitle = document.getElementById('art-title-lb');
@@ -337,7 +337,6 @@
                 lightbox.style.display = 'flex';
                 lightboxImg.src = e.target.src;
                 
-                // Marrim të dhënat nga atributet 'data'
                 lightboxTitle.innerHTML = e.target.getAttribute('data-title');
                 lightboxDesc.innerHTML = e.target.getAttribute('data-desc');
                 
