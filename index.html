@@ -53,7 +53,7 @@
         nav a { color: #1a1a1a; text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
         nav a:hover { color: var(--accent); }
 
-        /* --- SECTIONS --- */
+        /* --- CONTAINER & TITLES --- */
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
         header { height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; }
         header h1 { font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 200; text-transform: uppercase; letter-spacing: 5px; }
@@ -69,6 +69,7 @@
         .art-card { background: white; border: 1px solid var(--border); overflow: hidden; transition: all 0.5s ease; cursor: pointer; opacity: 0; transform: translateY(20px); }
         .art-card.visible { opacity: 1; transform: translateY(0); }
         .art-card img { width: 100%; height: 450px; object-fit: cover; transition: transform 0.8s ease; }
+        .art-card:hover img { transform: scale(1.05); }
 
         /* --- ABOUT --- */
         .bio-flex { display: flex; flex-wrap: wrap; gap: 60px; align-items: center; margin-bottom: 120px; background: white; padding: 40px; border: 1px solid var(--border); }
@@ -76,9 +77,10 @@
         .bio-text { flex: 1 1 300px; }
 
         /* --- REVIEWS --- */
-        .reviews-container { background: white; padding: 40px; border: 1px solid var(--border); margin-bottom: 100px; }
+        .reviews-container { background: white; padding: 40px; border: 1px solid var(--border); margin-bottom: 100px; min-height: 200px; }
 
         /* --- CONTACT --- */
+        .contact-form { max-width: 600px; margin: 0 auto 100px auto; }
         input, textarea { width: 100%; padding: 15px; border: 1px solid var(--border); background: transparent; margin-bottom: 15px; font-family: inherit; }
         .submit-btn { background: #1a1a1a; color: white; padding: 15px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; width: 100%; transition: 0.3s; }
         .submit-btn:hover { background: var(--accent); }
@@ -89,7 +91,8 @@
         #lightbox-img { max-height: 80vh; max-width: 60%; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
         .lightbox-details { max-width: 400px; text-align: left; }
         .close-lightbox { position: absolute; top: 30px; right: 40px; font-size: 40px; cursor: pointer; }
-        .inquire-btn { display: inline-block; padding: 12px 30px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; }
+        .inquire-btn { display: inline-block; padding: 12px 30px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; transition: 0.3s; }
+        .inquire-btn:hover { background: var(--accent); color: white; }
 
         @media (max-width: 900px) {
             .lightbox-content { flex-direction: column; overflow-y: auto; padding: 50px 0; }
@@ -127,7 +130,7 @@
             <h2 class="section-title">Selected Portfolio</h2>
             <div class="gallery">
                 <div class="art-card">
-                    <img src="piktura.jpeg" alt="L’Éveil" data-title="L’Éveil" data-desc="Au commencement il y a le silence... <br><br> 80cm x 80cm - Acrylique sur toile">
+                    <img src="piktura.jpeg" alt="L’Éveil" data-title="L’Éveil" data-desc="Au commencement il y a le silence. Le passé repose là, lisse et sombre... <br><br> 80cm x 80cm - Acrylique sur toile">
                     <div style="padding: 20px; text-align: center;"><h3 style="font-weight: 400;">L’Éveil</h3></div>
                 </div>
                 <div class="art-card">
@@ -140,11 +143,11 @@
         <section id="about">
             <h2 class="section-title">The Artist</h2>
             <div class="bio-flex">
-                <img src="vana.jpeg" alt="Vanesa Lika" class="bio-img">
+                <img src="DSC00595.jpeg" alt="Vanesa Lika" class="bio-img">
                 <div class="bio-text">
-                    <h3 style="font-weight: 300; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">About the Artist</h3>
+                    <h3 style="font-weight: 300; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">The Artist</h3>
                     <p style="font-size: 1.1rem; font-style: italic; line-height: 1.8; opacity: 0.9;">
-                        "Vanesa Lika is a modern visual artist who explores the depth of human emotion through a vibrant interplay of color and form."
+                        "Vanesa Lika is a modern visual artist who explores the depth of human emotion through a vibrant interplay of color and modern form. Her work translates internal silences into visual rhythms."
                     </p>
                 </div>
             </div>
@@ -159,12 +162,14 @@
 
         <section id="contact">
             <h2 class="section-title">Contact</h2>
-            <form action="mailto:vanesalika262@gmail.com" method="POST" enctype="text/plain" style="max-width: 600px; margin: 0 auto 100px auto;">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea rows="5" placeholder="Your Message"></textarea>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
+            <div class="contact-form">
+                <form action="mailto:vanesalika262@gmail.com" method="POST" enctype="text/plain">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea rows="5" placeholder="Your Message"></textarea>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
         </section>
     </div>
 
@@ -185,17 +190,26 @@
     </footer>
 
     <script>
-        // 1. Preloader Safety
-        window.addEventListener('load', () => { document.getElementById('preloader').classList.add('loader-hidden'); });
-        setTimeout(() => { const pl = document.getElementById('preloader'); if(pl) pl.classList.add('loader-hidden'); }, 3000);
+        // 1. Preloader Control
+        window.addEventListener('load', () => {
+            document.getElementById('preloader').classList.add('loader-hidden');
+        });
+
+        // Safety Trigger: Nese faqja nuk hapet pas 3 sekondash, e detyrojme te hapet
+        setTimeout(() => {
+            const pl = document.getElementById('preloader');
+            if(pl) pl.classList.add('loader-hidden');
+        }, 3000);
 
         // 2. Scroll Animation
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
         }, { threshold: 0.1 });
         document.querySelectorAll('.art-card').forEach(card => observer.observe(card));
 
-        // 3. Lightbox
+        // 3. Lightbox Logic
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxTitle = document.getElementById('art-title-lb');
@@ -211,18 +225,28 @@
             });
         });
 
-        document.querySelector('.close-lightbox').addEventListener('click', () => { lightbox.style.display = 'none'; document.body.style.overflow = 'auto'; });
+        document.querySelector('.close-lightbox').addEventListener('click', () => {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
 
-        // 4. DISQUS CONFIGURATION
+        // 4. DISQUS SAFE LOAD (RREGULLUAR)
         var disqus_config = function () {
             this.page.url = window.location.href;  
             this.page.identifier = 'vanesa-lika-portfolio'; 
         };
+
         (function() { 
-            var d = document, s = d.createElement('script');
-            s.src = 'https://disqus.com/by/vanesalika/; // MOS HARRO: Ndrysho 'vanesa-lika' me emrin tend ne Disqus
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
+            try {
+                var d = document, s = d.createElement('script');
+                // ZEVENDESIMI I DUHUR: 
+                // Ne llogarine tende te Disqus, gjej 'Shortname' dhe vendose ne vend te 'vanesalika'
+                s.src = 'https://vanesalika.disqus.com/embed.js'; 
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            } catch (e) {
+                console.warn("Disqus block prevented. Page still loading.");
+            }
         })();
     </script>
 </body>
