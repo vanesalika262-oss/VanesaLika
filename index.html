@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta name="theme-color" content="#fffdf5">    <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vanesa Lika | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -349,18 +350,6 @@
 .loader-hidden {
     opacity: 0;
     visibility: hidden;
-}
-/* Kjo e bën foton të jetë e fshehur në fillim */
-.art-card {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-}
-
-/* Kjo klasë do të shtohet automatikisht nga JavaScript kur fotoja të shfaqet në ekran */
-.art-card.visible {
-    opacity: 1;
-    transform: translateY(0);
 }</style></head>
 <body>
 
@@ -449,34 +438,8 @@ c’est le monde entier qui renaît.
     <footer style="text-align: center; padding: 40px; opacity: 0.3; font-size: 0.8rem;">
         &copy; 2026 Vanesa Lika. All Rights Reserved.
     </footer>
-<script>
-        // Kjo pjesë bën që Preloader-i të zhduket pasi ngarkohet faqja
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.classList.add('loader-hidden');
-            }, 1500); 
-        });
 
-        // Këtu mund të kesh edhe kodin e kursorit që vendosëm më parë
-    </script>
-// Krijon një "vëzhgues" që kontrollon nëse fotot janë në ekran
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // Kur fotoja hyn në ekran, i shtohet klasa 'visible'
-            entry.target.classList.add('visible');
-        }
-    });
-}, { 
-    threshold: 0.1 // Animacioni fillon kur 10% e fotos duket në ekran
-});
-
-// I thotë vëzhguesit të ndjekë çdo element me klasën 'art-card'
-document.querySelectorAll('.art-card').forEach(card => {
-    observer.observe(card);
-});</body>
-</html></body><div id="preloader">
+</body><div id="preloader">
     <div class="loader-content">
         <h2 class="loader-logo">VL</h2>
         <div class="loader-bar"></div>
