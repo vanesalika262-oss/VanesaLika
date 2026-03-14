@@ -350,7 +350,18 @@
 .loader-hidden {
     opacity: 0;
     visibility: hidden;
-}</style></head>
+}<head>
+    <style>
+     .lightbox {
+            position: fixed;
+            
+        }
+
+        .art-card {
+            
+        }
+
+    </style> </head></head>
 <body>
 
     <nav>
@@ -438,8 +449,66 @@ c’est le monde entier qui renaît.
     <footer style="text-align: center; padding: 40px; opacity: 0.3; font-size: 0.8rem;">
         &copy; 2026 Vanesa Lika. All Rights Reserved.
     </footer>
+<script>
+        
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('loader-hidden');
+            }, 1500); 
+        });
 
-</body><div id="preloader">
+        
+    </script>
+<div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="">
+        <div class="lightbox-details">
+            <h3 id="art-title">Titulli i Veprës</h3>
+            <p id="art-description">Detajet mbi teknikën dhe dimensionet.</p>
+            <a href="mailto:vanesa@example.com" class="inquire-btn">Interesohu për këtë punim</a>
+<script>
+        <script>
+        // KËTU NGJIT KODIN JAVASCRIPT QË TË DËRGOVA MË SIPËR
+        // Për Lightbox-in ose për Scroll Animation
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.art-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Kodi për Lightbox (hapjen e fotos)
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        
+        document.querySelectorAll('.art-card img').forEach(img => {
+            img.addEventListener('click', (e) => {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = e.target.src;
+            });
+        });
+
+        document.querySelector('.close-lightbox').addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>    </script>
+
+</body>
+</html></div>
+    </div>
+</div></body>
+</html></body><div id="preloader">
     <div class="loader-content">
         <h2 class="loader-logo">VL</h2>
         <div class="loader-bar"></div>
