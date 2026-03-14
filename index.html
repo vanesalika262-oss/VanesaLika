@@ -3,235 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vanesa Lika </title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Vanesa Lika | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-           
-        }:root {
---glass: rgba(0, 0, 0, 0.05);
---border: rgba(0, 0, 0, 0.1);
---accent: #d4a373;
---bg: #fffdf5;            body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: var(--bg); /* Sfondi bëhet ngjyrë qumështi */
-    color: #2c2c2c; /* Teksti bëhet i errët që të lexohet */
-    scroll-behavior: smooth;
-    line-height: 1.6;
-}
-        * { box-sizing: border-box; }
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #ffffff;
+            --bg: #0a0a0a;
+        }
 
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            background: var(--bg);circle at top right, #1e293b, #0f172a);
-            color: #2c2c2c;
+            background: var(--bg);
+            color: white;
             scroll-behavior: smooth;
             line-height: 1.6;
         }
 
-        /* 1. NAVIGATION */
-     /* 1. NAVIGATION */
-nav {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.9); /* Sfond i zi me pak transparencë */
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50px;
-    padding: 12px 30px;
-    display: flex;
-    gap: 25px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Pak hije që të dalë në pah */
-}
-
-nav a {
-    color: white; /* Shkronjat e bardha */
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    opacity: 0.8;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    opacity: 1;
-    color: var(--accent); /* Ngjyra që ndryshon kur kalon mausin sipër */
-}        /* 2. LAYOUT SECTIONS */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 12px 30px;
+            display: flex;
+            gap: 25px;
         }
 
-        header <header id="home" style="height: 100vh; display: flex; justify-content: center; align-items: center;">
-    <div class="hero-frame">
-        <div class="corner top-left"></div>
-        <div class="corner bottom-right"></div>
-        
-        <h1 class="main-title">Vanesa Lika</h1>
-        <p class="sub-title">Fine Art & Contemporary Design</p>
-    </div>
-</header>
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        nav a:hover { opacity: 1; }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
         header h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 300;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 200;
+            letter-spacing: 10px;
+            text-transform: uppercase;
             margin: 0;
-            letter-spacing: -2px;
         }
 
-        /* 3. GALLERY GRID */
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            border-left: 4px solid var(--accent);
-            padding-left: 15px;
+        header p {
+            opacity: 0.5;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
         }
 
         .gallery {
+            padding: 100px 5%;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 100px;
+            gap: 30px;
         }
 
         .art-card {
             background: var(--glass);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .art-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
+            border-radius: 15px;
+            padding: 15px;
+            transition: 0.5s;
         }
 
         .art-card img {
             width: 100%;
-            height: 300px;
-            object-fit: cover;
-            display: block;
+            border-radius: 10px;
         }
 
-        /* 4. BIOGRAPHY */
+        .about {
+            padding: 100px 10%;
+            background: #0f0f0f;
+        }
+
         .bio-flex {
             display: flex;
-            gap: 50px;
             align-items: center;
-            background: var(--glass);
-            padding: 50px;
-            border-radius: 30px;
-            border: 1px solid var(--border);
-            backdrop-filter: blur(10px);
-            margin-bottom: 100px;
+            gap: 50px;
+            flex-wrap: wrap;
         }
 
         .bio-img {
-            width: 250px;
-            height: 250px;
-            border-radius: 20px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
             object-fit: cover;
-            border: 1px solid var(--accent);
+            border: 1px solid var(--border);
         }
 
-        /* 5. CONTACT FORM */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto 100px auto;
-        }
+        .contact { padding: 100px 10%; text-align: center; }
 
         input, textarea {
             width: 100%;
+            max-width: 500px;
             background: var(--glass);
             border: 1px solid var(--border);
             padding: 15px;
-            border-radius: 12px;
             color: white;
-            margin-bottom: 20px;
-            outline: none;
+            border-radius: 8px;
+            margin-bottom: 15px;
         }
 
-        input:focus, textarea:focus { border-color: var(--accent); }
-
-        .submit-btn {
-            background: var(--accent);
-            color: #0f172a;
+        button {
+            background: white;
+            color: black;
             border: none;
             padding: 15px 40px;
-            border-radius: 12px;
-            font-weight: 600;
+            border-radius: 30px;
             cursor: pointer;
-            width: 100%;
-            transition: 0.3s;
+            font-weight: 600;
         }
 
-        .submit-btn:hover { opacity: 0.9; transform: scale(0.98); }
-
-        @media (max-width: 768px) {
-            .bio-flex { flex-direction: column; text-align: center; padding: 30px; }
-            nav { width: 90%; justify-content: center; gap: 15px; font-size: 0.8rem; }
-        }
-    </style>/* Unique Hero Section */
-.hero-frame {
-    position: relative;
-    padding: 80px 60px;
-    text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-}
-
-.main-title {
-    font-size: clamp(2.5rem, 8vw, 5rem) !important;
-    font-weight: 200 !important;
-    letter-spacing: 15px;
-    text-transform: uppercase;
-    margin: 0;
-    color: #1a1a1a;
-    animation: tracking-expand 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-}
-
-.sub-title {
-    letter-spacing: 7px;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    margin-top: 20px;
-    opacity: 0.5;
-    color: #d4a373; /* Ngjyra Gold/Bronze */
-}
-
-.corner {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-}
-
-.top-left {
-    top: -2px;
-    left: -2px;
-    border-top: 2px solid #d4a373;
-    border-left: 2px solid #d4a373;
-}
-
-.bottom-right {
-    bottom: -2px;
-    right: -2px;
-    border-bottom: 2px solid #d4a373;
-    border-right: 2px solid #d4a373;
-}
-
-/* Animation for the title */
-@keyframes tracking-expand {
-    0% { letter-spacing: -0.5em; opacity: 0; }
-    40% { opacity: 0.6; }
-    100% { opacity: 1; }
-}}</head>
+        footer { padding: 50px; text-align: center; opacity: 0.3; }
+    </style>
+</head>
 <body>
 
     <nav>
@@ -241,57 +147,45 @@ nav a:hover {
         <a href="#contact">Contact</a>
     </nav>
 
-    <div class="container">
-        <header id="home">
-            <h1>Vanesa LIKA</h1> <p style="opacity: 0.6; font-size: 1.2rem;">Visual Artist & Creator</p>
-        </header>
+    <header id="home">
+        <h1>Vanesa Lika</h1>
+        <p>Visual Artist & Creator</p>
+    </header>
 
-        <section id="gallery">
-            <h2 class="section-title">Selected Portfolio</h2>
-            <div class="gallery">
-                <div class="art-card">
-                    <img src=Vanesa.jpeg="Art">
-                    <div style="padding: 20px;">
-                        <span style="color: var(--accent); font-size: 0.8rem;">2024</span>
-                        <h3 style="margin: 5px 0;">Shadow & Light</h3>
-                    </div>
-                </div>
-                <div class="art-card">
-                    <img src="https://picsum.photos/id/23/600/600" alt="Art">
-                    <div style="padding: 20px;">
-                        <span style="color: var(--accent); font-size: 0.8rem;">2024</span>
-                        <h3 style="margin: 5px 0;">Ethereal Forms</h3>
-                    </div>
-                </div>
+    <section class="gallery" id="gallery">
+        <div class="art-card">
+            <img src="https://picsum.photos/id/17/600/600" alt="Art">
+            <h3>Shadow & Light</h3>
+            <p>2024 Collection</p>
+        </div>
+        <div class="art-card">
+            <img src="https://picsum.photos/id/23/600/600" alt="Art">
+            <h3>Ethereal Forms</h3>
+            <p>2024 Collection</p>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="bio-flex">
+            <img src="https://picsum.photos/id/65/400/400" alt="Vanesa Lika" class="bio-img">
+            <div class="bio-text">
+                <h2>The Artist</h2>
+                <p>Vanesa Lika is a visual artist focused on exploring emotions through modern colors and forms. Her work blends traditional techniques with a contemporary aesthetic, creating a unique experience for the viewer.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="about">
-            <h2 class="section-title">The Artist</h2>
-            <div class="bio-flex">
-                <img src="Vanesa.jpeg" alt="Artist Profile" class="bio-img">
-                <div>
-                    <h3>Vanesa Lika</h3>
-                    <p>"Vanesa Lika is a modern visual artist who explores the depth of human emotion through a vibrant interplay of color and modern form. By bridging the gap between traditional craftsmanship and modern aesthetics, her work offers viewers a profound and immersive sensory experience."
-                </div>
-            </div>
-        </section>
+    <section class="contact" id="contact">
+        <h2>Get in Touch</h2>
+        <form>
+            <input type="email" placeholder="Your Email" required><br>
+            <textarea placeholder="Your Message" rows="5"></textarea><br>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
 
-        <section id="contact">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="contact-form">
-                <form action="https://formspree.io/f/your-id" method="POST">
-                    <input type="text" name="name" placeholder="Full Name" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="submit-btn">Send Inquiry</button>
-                </form>
-            </div>
-        </section>
-    </div>
-
-    <footer style="text-align: center; padding: 40px; opacity: 0.4; font-size: 0.8rem;">
-        &copy; 2026 Vanesa Lika. All Rights Reserved.
+    <footer>
+        <p>© 2026 Vanesa Lika. All Rights Reserved.</p>
     </footer>
 
 </body>
