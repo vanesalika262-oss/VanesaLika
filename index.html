@@ -7,46 +7,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
-            --accent: #ffffff;
-            --bg: #0a0a0a;
+            /* Konfigurimi i ngjyrave për stilin 'Milk' */
+            --bg: #fffdf5; 
+            --text-dark: #1a1a1a;
+            --accent: #d4a373;
+            --border-dark: rgba(0, 0, 0, 0.1);
         }
 
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: white;
+            background-color: var(--bg);
+            color: var(--text-dark);
             scroll-behavior: smooth;
             line-height: 1.6;
         }
 
+        /* NAVIGATION - E zezë për kontrast të fortë */
         nav {
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
-            background: rgba(15, 15, 15, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(12px);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50px;
             padding: 12px 30px;
             display: flex;
             gap: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
         nav a {
-            color: white;
+            color: white !important; /* Shkronjat e menusë gjithmonë të bardha */
             text-decoration: none;
             font-size: 0.9rem;
-            opacity: 0.6;
+            opacity: 0.7;
             transition: 0.3s;
         }
 
-        nav a:hover { opacity: 1; }
+        nav a:hover { opacity: 1; color: var(--accent) !important; }
 
+        /* HERO SECTION */
         header {
             height: 100vh;
             display: flex;
@@ -54,7 +58,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
         }
 
         header h1 {
@@ -63,38 +66,51 @@
             letter-spacing: 10px;
             text-transform: uppercase;
             margin: 0;
+            color: var(--text-dark) !important;
         }
 
         header p {
-            opacity: 0.5;
+            opacity: 0.6;
             letter-spacing: 4px;
             text-transform: uppercase;
             font-size: 0.9rem;
+            color: var(--accent) !important;
         }
 
+        /* GALLERY */
         .gallery {
             padding: 100px 5%;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
 
         .art-card {
-            background: var(--glass);
-            border: 1px solid var(--border);
+            background: white;
+            border: 1px solid var(--border-dark);
             border-radius: 15px;
             padding: 15px;
             transition: 0.5s;
         }
 
+        .art-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .art-card h3 { margin-top: 15px; color: var(--text-dark); }
+        .art-card p { opacity: 0.6; color: var(--text-dark); }
+
         .art-card img {
             width: 100%;
             border-radius: 10px;
+            display: block;
         }
 
+        /* ABOUT SECTION */
         .about {
             padding: 100px 10%;
-            background: #0f0f0f;
+            background: rgba(0,0,0,0.02);
         }
 
         .bio-flex {
@@ -105,88 +121,13 @@
         }
 
         .bio-img {
-            width: 300px;
-            height: 300px;
+            width: 320px;
+            height: 320px;
             border-radius: 50%;
             object-fit: cover;
-            border: 1px solid var(--border);
+            border: 3px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        .contact { padding: 100px 10%; text-align: center; }
-
-        input, textarea {
-            width: 100%;
-            max-width: 500px;
-            background: var(--glass);
-            border: 1px solid var(--border);
-            padding: 15px;
-            color: white;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        button {
-            background: white;
-            color: black;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-        }
-
-        footer { padding: 50px; text-align: center; opacity: 0.3; }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <header id="home">
-        <h1>Vanesa Lika</h1>
-        <p>Visual Artist & Creator</p>
-    </header>
-
-    <section class="gallery" id="gallery">
-        <div class="art-card">
-            <img src="https://picsum.photos/id/17/600/600" alt="Art">
-            <h3>Shadow & Light</h3>
-            <p>2024 Collection</p>
-        </div>
-        <div class="art-card">
-            <img src="https://picsum.photos/id/23/600/600" alt="Art">
-            <h3>Ethereal Forms</h3>
-            <p>2024 Collection</p>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="bio-flex">
-            <img src="https://picsum.photos/id/65/400/400" alt="Vanesa Lika" class="bio-img">
-            <div class="bio-text">
-                <h2>The Artist</h2>
-                <p>Vanesa Lika is a visual artist focused on exploring emotions through modern colors and forms. Her work blends traditional techniques with a contemporary aesthetic, creating a unique experience for the viewer.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <h2>Get in Touch</h2>
-        <form>
-            <input type="email" placeholder="Your Email" required><br>
-            <textarea placeholder="Your Message" rows="5"></textarea><br>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-
-    <footer>
-        <p>© 2026 Vanesa Lika. All Rights Reserved.</p>
-    </footer>
-
-</body>
-</html>
+        .bio-text { flex: 1; min-width: 300px; }
+        .bio-
