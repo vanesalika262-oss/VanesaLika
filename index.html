@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vanesa Lika | Portfolio</title>
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23d4a373%22/><text y=%22.9em%22 x=%2250%25%22 font-family=%22Inter, sans-serif%22 font-size=%2250%22 text-anchor=%22middle%22 fill=%22white%22 dy=%22.3em%22>VL</text></svg>">
-
-    <meta property="og:title" content="Vanesa Lika | Visual Artist Portfolio">
-    <meta property="og:description" content="Exploration of human emotion through vibrant color and modern form.">
-    <meta property="og:image" content="profile.jpeg">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23fffdf5%22/><text y=%2250%25%22 x=%2250%25%22 font-family=%22Inter, sans-serif%22 font-size=%2240%22 font-weight=%22300%22 text-anchor=%22middle%22 fill=%22%23d4a373%22 dy=%22.35em%22 letter-spacing=%222%22>VL</text></svg>">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
     
@@ -23,138 +19,129 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: #2c2c2c;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* --- PRELOADER --- */
-        #preloader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg); display: flex; justify-content: center;
-            align-items: center; z-index: 10000; transition: opacity 0.5s ease;
-        }
-        .loader-content { text-align: center; }
-        .loader-logo {
-            font-size: 3rem; font-weight: 200; letter-spacing: 10px;
-            margin-bottom: 20px; color: var(--accent);
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-        .loader-bar { width: 0; height: 1px; background: var(--accent); margin: 0 auto; animation: grow 1.5s forwards; }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.95); } }
-        @keyframes grow { to { width: 100px; } }
-        .loader-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: #2c2c2c; line-height: 1.6; overflow-x: hidden; }
 
         /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
             z-index: 1000; background: var(--glass); backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px); border: 1px solid var(--border);
-            border-radius: 100px; padding: 12px 30px; display: flex; gap: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid var(--border); border-radius: 100px; padding: 12px 30px; display: flex; gap: 20px;
         }
         nav a { color: #1a1a1a; text-decoration: none; font-size: 0.75rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; }
         nav a:hover { color: var(--accent); }
 
+        /* --- HERO SECTION --- */
+        header { 
+            height: 100vh; display: flex; justify-content: center; align-items: center; 
+            text-align: center; position: relative; 
+        }
+        
+        .hero-content { animation: fadeInScale 2.5s ease-out; }
+
+        header h1 { 
+            font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 200; 
+            text-transform: uppercase; letter-spacing: 5px; 
+        }
+
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: translateY(15px); filter: blur(8px); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .scroll-indicator {
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase;
+            opacity: 0.3; animation: bounce 2.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-6px); }
+            60% { transform: translateX(-50%) translateY(-3px); }
+        }
+
+        /* --- ART QUOTE (Me efekt Scroll Reveal) --- */
+        .art-quote {
+            text-align: center;
+            max-width: 600px;
+            margin: 120px auto 40px auto;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.5s ease-out;
+        }
+        .art-quote.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .art-quote p {
+            font-size: 1.1rem; font-weight: 200; font-style: italic;
+            opacity: 0.5; letter-spacing: 1px; line-height: 1.8;
+        }
+
         /* --- CONTAINER & TITLES --- */
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-        header { height: 100vh; display: flex; justify-content: center; align-items: center; text-align: center; }
-        header h1 { font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 200; text-transform: uppercase; letter-spacing: 5px; }
-
-        .section-title {
-            font-size: 0.9rem; margin: 100px 0 40px 0; text-transform: uppercase;
-            letter-spacing: 5px; text-align: center; color: var(--accent);
-        }
+        .section-title { font-size: 0.9rem; margin: 60px 0 40px 0; text-transform: uppercase; letter-spacing: 5px; text-align: center; color: var(--accent); }
         .section-title::after { content: ''; display: block; width: 30px; height: 1px; background: var(--accent); margin: 15px auto; }
 
         /* --- GALLERY --- */
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; padding-bottom: 60px; }
-        .art-card { background: white; border: 1px solid var(--border); overflow: hidden; transition: all 0.5s ease; cursor: pointer; opacity: 0; transform: translateY(20px); }
-        .art-card.visible { opacity: 1; transform: translateY(0); }
-        .art-card img { width: 100%; height: 450px; object-fit: cover; transition: transform 0.8s ease; }
-        .art-card:hover img { transform: scale(1.05); }
+        .art-card { background: white; border: 1px solid var(--border); overflow: hidden; cursor: pointer; transition: 0.4s; }
+        .art-card img { width: 100%; height: 450px; object-fit: cover; transition: 0.6s ease; }
+        .art-card:hover img { transform: scale(1.03); }
 
         /* --- ABOUT --- */
         .bio-flex { display: flex; flex-wrap: wrap; gap: 60px; align-items: center; margin-bottom: 120px; background: white; padding: 40px; border: 1px solid var(--border); }
         .bio-img { flex: 1 1 400px; height: 500px; object-fit: cover; }
         .bio-text { flex: 1 1 300px; }
 
-        /* --- REVIEWS --- */
-        .reviews-container { 
-            background: #ffffff; 
-            padding: 60px 40px; 
-            border: 1px solid var(--border); 
-            margin-bottom: 100px;
-        }
-        #cusdis_thread {
-            --cusdis-primary-color: var(--accent);
-            --cusdis-font-family: 'Inter', sans-serif;
-        }
-
-        /* --- CONTACT --- */
-        .contact-form { max-width: 600px; margin: 0 auto 100px auto; }
-        input, textarea { width: 100%; padding: 15px; border: 1px solid var(--border); background: transparent; margin-bottom: 15px; font-family: inherit; }
-        .submit-btn { background: #1a1a1a; color: white; padding: 15px; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; width: 100%; transition: 0.3s; }
-        .submit-btn:hover { background: var(--accent); }
-
         /* --- LIGHTBOX --- */
-        .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.98); display: none; justify-content: center; align-items: center; z-index: 2000; }
-        .lightbox-content { display: flex; flex-direction: row; align-items: center; max-width: 90%; gap: 50px; }
-        #lightbox-img { max-height: 80vh; max-width: 60%; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
-        .lightbox-details { max-width: 400px; text-align: left; }
-        .close-lightbox { position: absolute; top: 30px; right: 40px; font-size: 40px; cursor: pointer; }
-        .inquire-btn { display: inline-block; padding: 12px 30px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; transition: 0.3s; }
-        .inquire-btn:hover { background: var(--accent); color: white; }
-
-        @media (max-width: 900px) {
-            .lightbox-content { flex-direction: column; overflow-y: auto; padding: 50px 0; }
-            #lightbox-img { max-width: 95%; max-height: 50vh; }
-            .lightbox-details { text-align: center; padding: 0 20px; }
+        .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; display: none; z-index: 2000; overflow-y: auto; }
+        .lightbox-content { 
+            display: flex; flex-direction: column; align-items: center; 
+            padding: 80px 20px; max-width: 800px; margin: 0 auto; text-align: center;
         }
+        #lightbox-img { max-width: 100%; height: auto; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .close-lightbox { position: fixed; top: 30px; right: 40px; font-size: 40px; cursor: pointer; color: #1a1a1a; z-index: 2100; }
+        
+        #art-title-lb { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-weight: 300; font-size: 1.2rem; margin-bottom: 20px; }
+        #art-desc-lb { font-weight: 200; font-style: italic; opacity: 0.7; font-size: 1rem; line-height: 1.8; max-width: 600px; }
+
+        @media (max-width: 768px) { nav { width: 90%; justify-content: space-around; } }
     </style>
 </head>
 <body>
-
-    <div id="preloader">
-        <div class="loader-content">
-            <h2 class="loader-logo">VL</h2>
-            <div class="loader-bar"></div>
-        </div>
-    </div>
 
     <nav>
         <a href="#home">Home</a>
         <a href="#gallery">Portfolio</a>
         <a href="#about">About</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#contact">Contact</a>
     </nav>
 
+    <header id="home">
+        <div class="hero-content">
+            <h1>Vanesa Lika</h1>
+            <p style="opacity: 0.4; letter-spacing: 8px; text-transform: uppercase; font-size: 0.65rem; margin-top: 15px; font-weight: 300;">
+                Visual Artist
+            </p>
+        </div>
+        <div class="scroll-indicator">Scroll</div>
+    </header>
+
     <div class="container">
-        <header id="home">
-            <div>
-                <h1>Vanesa Lika</h1>
-                <p style="opacity: 0.5; letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem;">Visual Artist</p>
-            </div>
-        </header>
+        <div class="art-quote" id="revealQuote">
+            <p>"L'art ne reproduit pas le visible, il rend visible."</p>
+        </div>
 
         <section id="gallery">
             <h2 class="section-title">Selected Portfolio</h2>
             <div class="gallery">
-                <div class="art-card">
-                    <img src="piktura.jpeg" alt="L’Éveil" 
-                         data-title="L’Éveil" 
-                         data-desc="Au commencement il y a le silence. Le passé repose là, lisse et sombre, comme une pierre polie par les eaux d'une rivière oubliée. Puis, une fissure. Une ligne de lumière qui déchire l'obscurité, non pas comme une blessure, mais comme une promesse. <br><br> 40cm x 100cm - Acrylique sur toile">
+                <div class="art-card" onclick="openLightbox('piktura.jpeg', 'L’Éveil', 'Au commencement il y a le silence.<br>Le passé repose là, lisse et sombre comme une mémoire enfouie.<br>En remontant, les traces apparaissent, se répètent, deviennent rythme et fréquences.<br>Peu à peu, la vibration s’élève jusqu’à atteindre la lumière. Une lumière diffuse dhe douce si l’aube d’une conscience nouvelle.<br>Et dans cette ascension silencieuse, l’ombre laisse place à l’éveil.')">
+                    <img src="piktura.jpeg" alt="L’Éveil">
                     <div style="padding: 20px; text-align: center;"><h3 style="font-weight: 400;">L’Éveil</h3></div>
                 </div>
-                <div class="art-card">
-                    <img src="piktura2.jpeg" alt="La Fracture" 
-                         data-title="La Fracture" 
-                         data-desc="Car chaque âme porte en elle un horizon lumineux, un espace où le bleu du ciel embrasse l'éclat de l'or, où la douleur devient grâce et la solitude, une danse. <br><br> 80cm x 80cm - Acrylique sur toile">
+                <div class="art-card" onclick="openLightbox('piktura2.jpeg', 'La Fracture', 'Car chaque âme porte en elle un horizon lumineux,<br>où l’ombre rencontre l’aube.<br>Dans la profondeur silencieuse de l’être,<br>quelque chose s’ouvre, comme une fracture sacrée.<br>Et lorsque enfin la lumière touche le cœur,<br>ce n’est pas seulement la saison qui change,<br>c’est le monde entier qui renaît.')">
+                    <img src="piktura2.jpeg" alt="La Fracture">
                     <div style="padding: 20px; text-align: center;"><h3 style="font-weight: 400;">La Fracture</h3></div>
                 </div>
             </div>
@@ -167,49 +154,19 @@
                 <div class="bio-text">
                     <h3 style="font-weight: 300; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">The Artist</h3>
                     <p style="font-size: 1.1rem; font-style: italic; line-height: 1.8; opacity: 0.9;">
-                        "Vanesa Lika is a modern visual artist who explores the depth of human emotion through a vibrant interplay of color and modern form. Her work translates internal silences into visual rhythms."
+                        "Vanesa Lika is a modern visual artist who explores the depth of human emotion through a vibrant interplay of color and modern form."
                     </p>
                 </div>
-            </div>
-        </section>
-
-        <section id="reviews">
-            <h2 class="section-title">Collector Feedback</h2>
-            <div class="reviews-container">
-                <div id="cusdis_thread"
-                    data-host="https://cusdis.com"
-                    data-app-id="96bf9343-a6d4-4991-865f-b73041e21977"
-                    data-page-id="vanesa-lika-portfolio"
-                    data-page-url="window.location.href"
-                    data-page-title="Vanesa Lika Portfolio"
-                    data-theme="light">
-                </div>
-                <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact-form">
-                <form action="mailto:vanesalika262@gmail.com" method="POST" enctype="text/plain">
-                    <input type="text" placeholder="Your Name" required name="Name">
-                    <input type="email" placeholder="Your Email" required name="Email">
-                    <textarea rows="5" placeholder="Your Message" name="Message"></textarea>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
             </div>
         </section>
     </div>
 
     <div id="lightbox" class="lightbox">
-        <span class="close-lightbox">&times;</span>
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
         <div class="lightbox-content">
             <img id="lightbox-img" src="">
-            <div class="lightbox-details">
-                <h3 id="art-title-lb" style="color: var(--accent); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;"></h3>
-                <p id="art-description-lb" style="margin-bottom: 30px; font-style: italic; font-weight: 300; font-size: 0.95rem;"></p>
-                <a href="mailto:vanesalika262@gmail.com" class="inquire-btn">Inquire about this piece</a>
-            </div>
+            <h2 id="art-title-lb"></h2>
+            <p id="art-desc-lb"></p>
         </div>
     </div>
 
@@ -218,36 +175,30 @@
     </footer>
 
     <script>
-        window.addEventListener('load', () => {
-            document.getElementById('preloader').classList.add('loader-hidden');
+        // Funksioni për Scroll Reveal
+        window.addEventListener('scroll', function() {
+            var quote = document.getElementById('revealQuote');
+            var position = quote.getBoundingClientRect().top;
+            var screenHeight = window.innerHeight;
+
+            if(position < screenHeight - 100) {
+                quote.classList.add('reveal');
+            }
         });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.art-card').forEach(card => observer.observe(card));
+        function openLightbox(imgSrc, title, description) {
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('art-title-lb').innerText = title;
+            document.getElementById('art-desc-lb').innerHTML = description;
+            document.getElementById('lightbox').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
 
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxTitle = document.getElementById('art-title-lb');
-        const lightboxDesc = document.getElementById('art-description-lb');
-
-        document.querySelectorAll('.art-card img').forEach(img => {
-            img.addEventListener('click', (e) => {
-                lightbox.style.display = 'flex';
-                lightboxImg.src = e.target.src;
-                lightboxTitle.innerHTML = e.target.getAttribute('data-title');
-                lightboxDesc.innerHTML = e.target.getAttribute('data-desc');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        document.querySelector('.close-lightbox').addEventListener('click', () => {
-            lightbox.style.display = 'none';
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
             document.body.style.overflow = 'auto';
-        });
+        }
     </script>
 </body>
 </html>
+    
