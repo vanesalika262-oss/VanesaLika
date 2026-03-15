@@ -5,20 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vanesa Lika | Portfolio</title>
 
-    <link rel="icon" type="image/jpeg" href="profile.jpeg">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23d4a373%22/><text y=%22.9em%22 x=%2250%25%22 font-family=%22Inter, sans-serif%22 font-size=%2250%22 text-anchor=%22middle%22 fill=%22white%22 dy=%22.3em%22>VL</text></svg>">
 
     <meta property="og:title" content="Vanesa Lika | Visual Artist Portfolio">
     <meta property="og:description" content="Exploration of human emotion through vibrant color and modern form.">
     <meta property="og:image" content="profile.jpeg">
-    <meta property="og:url" content="https://vanesalika.github.io/">
-    <meta name="twitter:card" content="summary_large_image">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --glass: rgba(255, 255, 255, 0.8);
-            --border: rgba(212, 163, 115, 0.2);
+            --border: rgba(212, 163, 115, 0.15);
             --accent: #d4a373;
             --bg: #fffdf5; 
         }
@@ -86,7 +84,16 @@
         .bio-text { flex: 1 1 300px; }
 
         /* --- REVIEWS --- */
-        .reviews-container { background: white; padding: 60px 40px; border: 1px solid var(--border); margin-bottom: 100px; min-height: 250px; }
+        .reviews-container { 
+            background: #ffffff; 
+            padding: 60px 40px; 
+            border: 1px solid var(--border); 
+            margin-bottom: 100px;
+        }
+        #cusdis_thread {
+            --cusdis-primary-color: var(--accent);
+            --cusdis-font-family: 'Inter', sans-serif;
+        }
 
         /* --- CONTACT --- */
         .contact-form { max-width: 600px; margin: 0 auto 100px auto; }
@@ -141,13 +148,13 @@
                 <div class="art-card">
                     <img src="piktura.jpeg" alt="L’Éveil" 
                          data-title="L’Éveil" 
-                         data-desc="Au commencement il y a le silence. Le passado repose là, lisse et sombre, comme une pierre polie par les eaux d'une rivière oubliée. Puis, une fissure. Une ligne de lumière qui déchire l'obscurité. <br><br> 80cm x 80cm - Acrylique sur toile">
+                         data-desc="Au commencement il y a le silence. Le passé repose là, lisse et sombre, comme une pierre polie par les eaux d'une rivière oubliée. Puis, une fissure. Une ligne de lumière qui déchire l'obscurité, non pas comme une blessure, mais comme une promesse. <br><br> 40cm x 100cm - Acrylique sur toile">
                     <div style="padding: 20px; text-align: center;"><h3 style="font-weight: 400;">L’Éveil</h3></div>
                 </div>
                 <div class="art-card">
                     <img src="piktura2.jpeg" alt="La Fracture" 
                          data-title="La Fracture" 
-                         data-desc="Car chaque âme porte en elle un horizon lumineux, un espace où le bleu du ciel embrasse l'éclat de l'or, où la douleur devient grâce. <br><br> 80cm x 80cm - Acrylique sur toile">
+                         data-desc="Car chaque âme porte en elle un horizon lumineux, un espace où le bleu du ciel embrasse l'éclat de l'or, où la douleur devient grâce et la solitude, une danse. <br><br> 80cm x 80cm - Acrylique sur toile">
                     <div style="padding: 20px; text-align: center;"><h3 style="font-weight: 400;">La Fracture</h3></div>
                 </div>
             </div>
@@ -211,12 +218,10 @@
     </footer>
 
     <script>
-        // Preloader
         window.addEventListener('load', () => {
             document.getElementById('preloader').classList.add('loader-hidden');
         });
 
-        // Scroll Animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -224,7 +229,6 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.art-card').forEach(card => observer.observe(card));
 
-        // Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxTitle = document.getElementById('art-title-lb');
