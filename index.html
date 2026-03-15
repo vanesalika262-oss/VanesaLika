@@ -60,20 +60,13 @@
             60% { transform: translateX(-50%) translateY(-3px); }
         }
 
-        /* --- ART QUOTE (Me efekt Scroll Reveal) --- */
+        /* --- ART QUOTE --- */
         .art-quote {
-            text-align: center;
-            max-width: 600px;
-            margin: 120px auto 40px auto;
-            padding: 0 20px;
-            opacity: 0;
-            transform: translateY(30px);
+            text-align: center; max-width: 600px; margin: 120px auto 40px auto;
+            padding: 0 20px; opacity: 0; transform: translateY(30px);
             transition: all 1.5s ease-out;
         }
-        .art-quote.reveal {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .art-quote.reveal { opacity: 1; transform: translateY(0); }
         .art-quote p {
             font-size: 1.1rem; font-weight: 200; font-style: italic;
             opacity: 0.5; letter-spacing: 1px; line-height: 1.8;
@@ -91,9 +84,16 @@
         .art-card:hover img { transform: scale(1.03); }
 
         /* --- ABOUT --- */
-        .bio-flex { display: flex; flex-wrap: wrap; gap: 60px; align-items: center; margin-bottom: 120px; background: white; padding: 40px; border: 1px solid var(--border); }
+        .bio-flex { display: flex; flex-wrap: wrap; gap: 60px; align-items: center; margin-bottom: 80px; background: white; padding: 40px; border: 1px solid var(--border); }
         .bio-img { flex: 1 1 400px; height: 500px; object-fit: cover; }
         .bio-text { flex: 1 1 300px; }
+
+        /* --- REVIEWS (Guestbook) --- */
+        .reviews-container { 
+            background: #ffffff; padding: 40px; border: 1px solid var(--border); 
+            max-width: 800px; margin: 0 auto 100px auto; 
+        }
+        #cusdis_thread iframe { width: 100% !important; min-height: 350px; border: none !important; }
 
         /* --- LIGHTBOX --- */
         .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; display: none; z-index: 2000; overflow-y: auto; }
@@ -116,6 +116,7 @@
         <a href="#home">Home</a>
         <a href="#gallery">Portfolio</a>
         <a href="#about">About</a>
+        <a href="#guestbook">Guestbook</a>
     </nav>
 
     <header id="home">
@@ -136,10 +137,11 @@
         <section id="gallery">
             <h2 class="section-title">Selected Portfolio</h2>
             <div class="gallery">
-                <div class="art-card" onclick="openLightbox('piktura.jpeg', 'L’Éveil', 'Au commencement il y a le silence.Au commencement il y a le silence.Le passé repose là, lisse et sombre comme une mémoire enfouie.En remontant, les traces apparaissent, se répètent, deviennent rythme et fréquences.Peu à peu, la vibration s’élève jusqu’à atteindre la lumière. Une lumière diffuse et douce comme l’aube d’une conscience nouvelle.Et dans cette ascension silencieuse, l’ombre laisse place à l’éveil.                   <img src="piktura.jpeg" alt="L’Éveil">
+                <div class="art-card" onclick="openLightbox('piktura.jpeg', 'L’Éveil', 'leveil')">
+                    <img src="piktura.jpeg" alt="L’Éveil">
                     <div style="padding: 20px; text-align: center;"><h3 style="font-weight: 400;">L’Éveil</h3></div>
                 </div>
-                <div class="art-card" onclick="openLightbox('piktura2.jpeg', 'La Fracture', 'Car chaque âme porte en elle un horizon lumineux,où l’ombre rencontre l’aube. Dans la profondeur silencieuse de l’être, quelque chose s’ouvre, comme une fracture sacrée.Et lorsque enfin la lumière touche le cœur, ce n’est pas seulement la saison qui change, c’est le monde entier qui renaît.>
+                <div class="art-card" onclick="openLightbox('piktura2.jpeg', 'La Fracture', 'lafracture')">
                     <img src="piktura2.jpeg" alt="La Fracture">
                     <div style="padding: 20px; text-align: center;"><h3 style="font-weight: 400;">La Fracture</h3></div>
                 </div>
@@ -158,6 +160,20 @@
                 </div>
             </div>
         </section>
+
+        <section id="guestbook">
+            <h2 class="section-title">Guestbook</h2>
+            <div class="reviews-container">
+                <div id="cusdis_thread" 
+                    data-host="https://cusdis.com" 
+                    data-app-id="96bf9343-a6d4-4991-865f-b73041e21977" 
+                    data-page-id="main-portfolio" 
+                    data-page-url="window.location.href" 
+                    data-page-title="Vanesa Lika Portfolio"
+                    data-theme="light">
+                </div>
+            </div>
+        </section>
     </div>
 
     <div id="lightbox" class="lightbox">
@@ -169,12 +185,20 @@
         </div>
     </div>
 
-    <footer style="text-align: center; padding: 60px; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px;">
+    <footer style="text-align: center; padding: 40px; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px;">
         &copy; 2026 VANESA LIKA. ALL RIGHTS RESERVED.
     </footer>
 
+    <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
     <script>
-        // Funksioni për Scroll Reveal
+        // Store texts safely to avoid HTML quote conflicts
+        const artTexts = {
+            'leveil': `Au commencement il y a le silence.<br>Le passé repose là, lisse et sombre comme une mémoire enfouie.<br>En remontant, les traces apparaissent, se répètent, deviennent rythme et fréquences.<br>Peu à peu, la vibration s’élève jusqu’à atteindre la lumière. Une lumière diffuse et douce comme l’aube d’une conscience nouvelle.<br>Et dans cette ascension silencieuse, l’ombre laisse place à l’éveil.`,
+            'lafracture': `Car chaque âme porte en elle<br>un horizon lumineux,<br>où l’ombre rencontre l’aube.<br>Dans la profondeur silencieuse de l’être,<br>quelque chose s’ouvre,<br>comme une fracture sacrée.<br>Et lorsque enfin la lumière<br>touche le cœur,<br>ce n’est pas seulement la saison qui change,<br>c’est le monde entier qui renaît.`
+        };
+
+        // Scroll Reveal Function
         window.addEventListener('scroll', function() {
             var quote = document.getElementById('revealQuote');
             var position = quote.getBoundingClientRect().top;
@@ -185,10 +209,11 @@
             }
         });
 
-        function openLightbox(imgSrc, title, description) {
+        // Lightbox Functions
+        function openLightbox(imgSrc, title, textKey) {
             document.getElementById('lightbox-img').src = imgSrc;
             document.getElementById('art-title-lb').innerText = title;
-            document.getElementById('art-desc-lb').innerHTML = description;
+            document.getElementById('art-desc-lb').innerHTML = artTexts[textKey];
             document.getElementById('lightbox').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
@@ -200,4 +225,3 @@
     </script>
 </body>
 </html>
-    
