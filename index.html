@@ -35,25 +35,12 @@
             height: 100vh; display: flex; justify-content: center; align-items: center; 
             text-align: center; position: relative; 
         }
-        
         .hero-content { animation: fadeInScale 2.5s ease-out; }
         header h1 { font-size: clamp(2.5rem, 10vw, 5rem); font-weight: 200; text-transform: uppercase; letter-spacing: 5px; }
 
         @keyframes fadeInScale {
             0% { opacity: 0; transform: translateY(15px); filter: blur(8px); }
             100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-        }
-
-        .scroll-indicator {
-            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-            font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase;
-            opacity: 0.3; animation: bounce 2.5s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-6px); }
-            60% { transform: translateX(-50%) translateY(-3px); }
         }
 
         /* --- ART QUOTE --- */
@@ -81,16 +68,17 @@
         .bio-img { flex: 1 1 400px; height: 500px; object-fit: cover; }
         .bio-text { flex: 1 1 300px; }
 
-        /* --- REVIEWS (Guestbook) --- */
-        .reviews-container { 
-            background: #ffffff; padding: 40px; border: 1px solid var(--border); 
-            max-width: 800px; margin: 0 auto 100px auto; 
+        /* --- CONTACT SECTION --- */
+        .contact-box {
+            text-align: center; padding: 80px 20px; margin-bottom: 100px;
+            border: 1px solid var(--border); background: white;
         }
+        .contact-box h3 { font-weight: 300; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-size: 1.2rem; }
+        .contact-box a { color: var(--accent); text-decoration: none; font-size: 1.1rem; transition: 0.3s; }
+        .contact-box a:hover { opacity: 0.5; }
 
-        /* --- CONTACT --- */
-        .contact-section { text-align: center; margin-bottom: 100px; padding: 40px; background: white; border: 1px solid var(--border); }
-        .contact-section a { color: var(--accent); text-decoration: none; font-weight: 300; font-size: 1.2rem; display: block; margin-top: 10px; transition: 0.3s; }
-        .contact-section a:hover { opacity: 0.6; }
+        /* --- GUESTBOOK --- */
+        .reviews-container { background: #ffffff; padding: 40px; border: 1px solid var(--border); max-width: 800px; margin: 0 auto 100px auto; }
 
         /* --- LIGHTBOX --- */
         .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; display: none; z-index: 2000; overflow-y: auto; }
@@ -100,9 +88,8 @@
         }
         #lightbox-img { max-width: 100%; height: auto; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .close-lightbox { position: fixed; top: 30px; right: 40px; font-size: 40px; cursor: pointer; color: #1a1a1a; z-index: 2100; }
-        
         #art-title-lb { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-weight: 300; font-size: 1.2rem; margin-bottom: 20px; }
-        #art-desc-lb { font-weight: 200; font-style: italic; opacity: 0.7; font-size: 1rem; line-height: 1.8; max-width: 600px; }
+        #art-desc-lb { font-weight: 200; font-style: italic; opacity: 0.7; font-size: 1rem; line-height: 1.8; max-width: 600px; white-space: pre-wrap; }
 
         @media (max-width: 768px) { nav { width: 90%; justify-content: space-around; } }
     </style>
@@ -123,7 +110,6 @@
                 Visual Artist
             </p>
         </div>
-        <div class="scroll-indicator">Scroll</div>
     </header>
 
     <div class="container">
@@ -137,17 +123,17 @@
                 <div class="art-card" onclick="openLightbox('piktura.jpeg', 'L’Éveil', 'leveil')">
                     <img src="piktura.jpeg" alt="L’Éveil">
                     <div style="padding: 20px; text-align: center;">
-                        <h3 style="font-weight: 400; letter-spacing: 1px;">L’Éveil</h3>
-                        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 5px; letter-spacing: 1px;">Acrylique sur toile</p>
-                        <p style="font-size: 0.7rem; opacity: 0.4; letter-spacing: 1px;">40x100 cm</p>
+                        <h3 style="font-weight: 400;">L’Éveil</h3>
+                        <p style="font-size: 0.8rem; opacity: 0.6;">Acrylique sur toile</p>
+                        <p style="font-size: 0.7rem; opacity: 0.4;">40x100 cm</p>
                     </div>
                 </div>
                 <div class="art-card" onclick="openLightbox('piktura2.jpeg', 'La Fracture', 'lafracture')">
                     <img src="piktura2.jpeg" alt="La Fracture">
                     <div style="padding: 20px; text-align: center;">
-                        <h3 style="font-weight: 400; letter-spacing: 1px;">La Fracture</h3>
-                        <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 5px; letter-spacing: 1px;">Acrylique sur toile</p>
-                        <p style="font-size: 0.7rem; opacity: 0.4; letter-spacing: 1px;">80x80 cm</p>
+                        <h3 style="font-weight: 400;">La Fracture</h3>
+                        <p style="font-size: 0.8rem; opacity: 0.6;">Acrylique sur toile</p>
+                        <p style="font-size: 0.7rem; opacity: 0.4;">80x80 cm</p>
                     </div>
                 </div>
             </div>
@@ -158,7 +144,6 @@
             <div class="bio-flex">
                 <img src="profile.jpeg" alt="Vanesa Lika" class="bio-img">
                 <div class="bio-text">
-                    <h3 style="font-weight: 300; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">The Artist</h3>
                     <p style="font-size: 1.1rem; font-style: italic; line-height: 1.8; opacity: 0.9;">
                         "Vanesa Lika is a modern visual artist who explores the depth of human emotion through a vibrant interplay of color and modern form."
                     </p>
@@ -167,30 +152,28 @@
         </section>
 
         <section id="contact">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="contact-section">
-                <p style="font-weight: 200; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; opacity: 0.5;">For inquiries and collaborations</p>
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-box">
+                <h3>Contact</h3>
                 <a href="mailto:vanesalika.art@gmail.com">vanesalika.art@gmail.com</a>
-                <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px; opacity: 0.6;">
-                    <a href="#" style="font-size: 0.9rem; letter-spacing: 1px;">Instagram</a>
-                    <a href="#" style="font-size: 0.9rem; letter-spacing: 1px;">Behance</a>
-                </div>
             </div>
         </section>
 
         <section id="guestbook">
             <h2 class="section-title">Guestbook</h2>
             <div class="reviews-container">
-                <div id="cusdis_thread" 
-                    data-host="https://cusdis.com" 
-                    data-app-id="96bf9343-a6d4-4991-865f-b73041e21977" 
-                    data-page-id="main-portfolio" 
-                    data-page-url="window.location.href" 
-                    data-page-title="Vanesa Lika Portfolio"
-                    data-theme="light">
-                </div>
+                <div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="96bf9343-a6d4-4991-865f-b73041e21977" data-page-id="main" data-page-url="window.location.href" data-page-title="Portfolio"></div>
             </div>
         </section>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="">
+            <h2 id="art-title-lb"></h2>
+            <div id="art-desc-lb"></div>
+        </div>
     </div>
 
     <footer style="text-align: center; padding: 40px; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px;">
@@ -198,26 +181,21 @@
     </footer>
 
     <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-
     <script>
         const artTexts = {
-            'leveil': `Au commencement il y a le silence.<br>Le passé repose là, lisse et sombre comme une mémoire enfouie.<br>En remontant, les traces apparaissent, se répètent, deviennent rythme et fréquences.<br>Peu à peu, la vibration s’élève jusqu’à atteindre la lumière. Une lumière diffuse et douce comme l’aube d’une conscience nouvelle.<br>Et dans cette ascension silencieuse, l’ombre laisse place à l’éveil.`,
-            'lafracture': `Car chaque âme porte en elle<br>un horizon lumineux,<br>où l’ombre rencontre l’aube.<br>Dans la profondeur silencieuse de l’être,<br>quelque chose s’ouvre,<br>comme une fracture sacrée.<br>Et lorsque enfin la lumière<br>touche le cœur,<br>ce n’est pas seulement la saison qui change,<br>c’est le monde entier qui renaît.`
+            'leveil': "Au commencement il y a le silence.\nLe passé repose là, lisse et sombre comme une mémoire enfouie.\nEn remontant, les traces apparaissent, se répètent, deviennent rythme et fréquences.\nPeu à peu, la vibration s’élève jusqu’à atteindre la lumière. Une lumière diffuse et douce comme l’aube d’une conscience nouvelle.\nEt dans cette ascension silencieuse, l’ombre laisse place à l’éveil.",
+            'lafracture': "Car chaque âme porte en elle\nun horizon lumineux,\noù l’ombre rencontre l’aube.\nDans la profondeur silencieuse de l’être,\nquelque chose s’ouvre,\ncomme une fracture sacrée.\nEt lorsque enfin la lumière\ntouche le cœur,\nce n’est pas seulement la saison qui change,\nc’est le monde entier qui renaît."
         };
 
         window.addEventListener('scroll', function() {
             var quote = document.getElementById('revealQuote');
-            if (quote) {
-                var position = quote.getBoundingClientRect().top;
-                var screenHeight = window.innerHeight;
-                if(position < screenHeight - 100) { quote.classList.add('reveal'); }
-            }
+            if(quote && quote.getBoundingClientRect().top < window.innerHeight - 100) { quote.classList.add('reveal'); }
         });
 
-        function openLightbox(imgSrc, title, textKey) {
+        function openLightbox(imgSrc, title, key) {
             document.getElementById('lightbox-img').src = imgSrc;
             document.getElementById('art-title-lb').innerText = title;
-            document.getElementById('art-desc-lb').innerHTML = artTexts[textKey];
+            document.getElementById('art-desc-lb').innerText = artTexts[key];
             document.getElementById('lightbox').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
